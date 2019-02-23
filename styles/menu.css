@@ -33,9 +33,6 @@
 /* Hamburger line */
 .menu-wrap .hamburger > div {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   flex: none;
   width: 100%;
   height: 2px;
@@ -78,6 +75,22 @@
   transform: rotate(225deg);
 }
 
+/* Show menu */
+.menu-wrap .toggler:checked ~ .menu {
+  visibility: visible;
+}
+
+.menu-wrap .toggler:checked ~ .menu > div {
+  transform: scale(1);
+  transition-duration: var(--menu-speed);
+  opacity: 1;
+}
+
+.menu-wrap .toggler:checked ~ .menu > div > div {
+  opacity: 1;
+  transition: opacity 400ms ease 200ms;
+}
+
 .menu-wrap .menu {
   position: fixed;
   display: flex;
@@ -87,7 +100,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  /* visibility: hidden; */
+  visibility: hidden;
   overflow: hidden;
 }
 
@@ -96,13 +109,16 @@
 }
 
 .menu-wrap .menu > div {
+  position: relative;
   display: flex;
+  flex: none;
   justify-content: center;
   align-items: center;
   background: var(--overlay-color);
-  width: 200vh;
-  height: 200vh;
-  /* transform: scale(0); */
+  width: 300vh;
+  height: 300vh;
+  border-radius: 50%;
+  transform: scale(0);
   transition: all 400ms ease;
 }
 
@@ -110,7 +126,7 @@
   text-align: center;
   max-width: 90vh;
   max-height: 100vh;
-  /* opacity: 0; */
+  opacity: 0;
   transition: opacity 400ms ease;
 }
 
